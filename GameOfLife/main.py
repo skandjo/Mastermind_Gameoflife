@@ -1,19 +1,16 @@
-from gameoflife import GameOfLife
+
+from gameoflife import GameOfLife  # Import du backend
+from gameoflifeGUI import GameOfLifeGUI  # Import du frontend
 
 if __name__ == "__main__":
-    """ executer sans interface graphique, 
-        directement sur le terminal"""
-    # Initialisation 
-    grid_size=7
-    fps = 2
-    game_of_life = GameOfLife(grid_size, fps) # SIZE = 7*7 
+    # Initialisation
+    game_gui = GameOfLifeGUI(grid_size=30, fps=5)  # Instancie l'interface graphique
 
-    # Frame de depart
-    game_of_life.frame[3, 2] = 1
-    game_of_life.frame[3, 3] = 1
-    game_of_life.frame[3, 4] = 1
+    # Exemple de configuration initiale (un oscillateur "blinker")
+    game_gui.game.frame[10, 9] = 1
+    game_gui.game.frame[10, 10] = 1
+    game_gui.game.frame[10, 11] = 1
 
-    # Boucle de jeu
-    game_of_life.start()
-
+    
+    game_gui.run()  # Lance la boucle principale
 
